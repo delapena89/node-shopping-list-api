@@ -30,21 +30,24 @@ router.get('/items', function(req, res) {
 // POST Single Item
 router.post('/items', function(req, res) {
   // add code here to create new item instance
-storage.addItem(req.body.name);
+  storage.addItem(req.body.name);
   res.json(storage.items);
   console.log(storage.items);
 });
+
 // PUT Single Item
-router.put('/items/:id', function(req, res) {
+router.put('/item/:id', function(req, res) {
   storage.items[req.params.id].name = req.body.name;
   res.json(storage.items);
 });
+
 // GET Single Item
-router.get('/items/:id', function(req, res) {
+router.get('/item/:id', function(req, res) {
   res.json(storage.items[req.params.id-1]);
 });
+
 // DELETE Single Item
-router.delete('/items/:id', function(req, res) {
+router.delete('/item/:id', function(req, res) {
   storage.items.splice(req.params.id-1, 1);
   res.json(storage.items[req.params.id-1]);
 });
